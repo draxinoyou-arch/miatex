@@ -110,22 +110,26 @@
                 <li class="nav-item">
 
                     <a class="nav-link"
-                        href="#personalizados">
+   href="#"
+   data-bs-toggle="modal"
+   data-bs-target="#modalPersonalizar">
 
-                        Personaliza tu Polo
+    Personaliza tu Polo
 
-                    </a>
+</a>
 
                 </li>
 
                 <li class="nav-item">
 
                     <a class="nav-link"
-                        href="#mayoristas">
+   href="#"
+   data-bs-toggle="modal"
+   data-bs-target="#modalMayoristas">
 
-                        Mayoristas
+    Mayoristas
 
-                    </a>
+</a>
 
                 </li>
 
@@ -170,8 +174,10 @@ data-bs-target="#carritoPanel">
 
     </button>
 
-    <a href="#cotizar"
-       class="btn btn-warning fw-bold px-4 rounded-3">
+    <a href="#"
+class="btn btn-warning fw-bold px-4 rounded-3"
+data-bs-toggle="modal"
+data-bs-target="#modalPersonalizar">
 
         <i class="bi bi-chat-dots-fill me-2"></i>
 
@@ -230,7 +236,10 @@ data-bs-target="#carritoPanel">
 
             </a>
 
-            <a href="#cotizar" class="btn btn-outline-dark btn-lg px-4">
+            <a href="#"
+class="btn btn-outline-dark btn-lg px-4"
+data-bs-toggle="modal"
+data-bs-target="#modalPersonalizar">
 
                 <i class="bi bi-pencil-square me-2"></i>
 
@@ -298,13 +307,16 @@ data-bs-target="#carritoPanel">
                 Crea polos únicos con tu logo, empresa o marca.
             </p>
 
-            <a href="#personalizados" class="feature-btn">
+            <a href="#"
+   class="feature-btn"
+   data-bs-toggle="modal"
+   data-bs-target="#modalPersonalizar">
 
-                Personalizar
+    Personalizar
 
-                <i class="bi bi-arrow-right ms-2"></i>
+    <i class="bi bi-arrow-right ms-2"></i>
 
-            </a>
+</a>
 
         </div>
 
@@ -324,13 +336,16 @@ data-bs-target="#carritoPanel">
                 Precios especiales para empresas y distribuidores.
             </p>
 
-            <a href="#cotizar" class="feature-btn">
+            <a href="#"
+   class="feature-btn"
+   data-bs-toggle="modal"
+   data-bs-target="#modalMayoristas">
 
-                Solicitar
+    Solicitar
 
-                <i class="bi bi-arrow-right ms-2"></i>
+    <i class="bi bi-arrow-right ms-2"></i>
 
-            </a>
+</a>
 
         </div>
 
@@ -550,10 +565,113 @@ id="masCantidad">
 
 </div>
 <!--====================================
+            NOSOTROS
+=====================================-->
+
+<section id="nosotros" class="py-5 bg-dark">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+
+NOSOTROS
+
+</span>
+
+<h2 class="display-5 fw-bold text-white">
+
+¿Por qué elegir MIA TEX?
+
+</h2>
+
+<p class="text-secondary">
+
+Somos especialistas en la fabricación y personalización de polos para empresas, marcas, instituciones y emprendedores de todo el Perú.
+
+</p>
+
+</div>
+
+<div class="row text-center g-4">
+
+<div class="col-lg-4">
+
+<div class="p-4 h-100 border border-warning rounded-4">
+
+<i class="bi bi-award-fill display-4 text-warning"></i>
+
+<h4 class="mt-3 text-white">
+
+Calidad Premium
+
+</h4>
+
+<p class="text-secondary">
+
+Utilizamos materiales de excelente calidad para garantizar una larga duración.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="p-4 h-100 border border-warning rounded-4">
+
+<i class="bi bi-truck display-4 text-warning"></i>
+
+<h4 class="mt-3 text-white">
+
+Envíos a Todo el Perú
+
+</h4>
+
+<p class="text-secondary">
+
+Realizamos envíos seguros y rápidos para cualquier ciudad del país.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="p-4 h-100 border border-warning rounded-4">
+
+<i class="bi bi-headset display-4 text-warning"></i>
+
+<h4 class="mt-3 text-white">
+
+Atención Personalizada
+
+</h4>
+
+<p class="text-secondary">
+
+Te asesoramos durante todo el proceso para obtener el mejor resultado.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!--====================================
             FOOTER
 =====================================-->
 
-<footer class="bg-dark text-white py-5">
+<<footer id="contacto" class="bg-dark text-white py-5">
 
 <div class="container">
 
@@ -687,7 +805,7 @@ Todos los derechos reservados.
 
 <small class="text-secondary">
 
-Desarrollado por <strong>VEYROX Systems</strong>
+Desarrollado por <strong>www.veyroxsystems.online</strong>
 
 </small>
 
@@ -767,8 +885,266 @@ Comprar por WhatsApp
 </div>
 
 </div>
+<!--====================================
+    MODAL PERSONALIZAR POLO
+=====================================-->
+
+<div class="modal fade" id="modalPersonalizar" tabindex="-1">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content bg-dark text-white border border-warning rounded-4">
+
+            <div class="modal-header border-secondary">
+
+                <h4 class="fw-bold text-warning">
+
+                    Personaliza tu Polo
+
+                </h4>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Nombre Completo</label>
+
+                        <input
+                            type="text"
+                            id="nombrePersonalizado"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">WhatsApp</label>
+
+                        <input
+                            type="text"
+                            id="whatsappPersonalizado"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Empresa (Opcional)</label>
+
+                        <input
+                            type="text"
+                            id="empresaPersonalizado"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Tipo de Polo</label>
+
+                        <select
+                            id="tipoPersonalizado"
+                            class="form-select">
+
+                            <option>Cuello Redondo</option>
+
+                            <option>Polo Camisero</option>
+
+                            <option>Dry Fit</option>
+
+                            <option>Oversize</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Color</label>
+
+                        <input
+                            type="text"
+                            id="colorPersonalizado"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Talla</label>
+
+                        <select
+                            id="tallaPersonalizado"
+                            class="form-select">
+
+                            <option>S</option>
+
+                            <option>M</option>
+
+                            <option>L</option>
+
+                            <option>XL</option>
+
+                            <option>XXL</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Cantidad</label>
+
+                        <input
+                            type="number"
+                            id="cantidadPersonalizado"
+                            class="form-control"
+                            value="1">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Tipo de Estampado</label>
+
+                        <select
+                            id="estampadoPersonalizado"
+                            class="form-select">
+
+                            <option>Pecho</option>
+
+                            <option>Espalda</option>
+
+                            <option>Pecho y Espalda</option>
+
+                            <option>Mangas</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <label class="form-label">
+
+                            Comentarios
+
+                        </label>
+
+                        <textarea
+                            id="comentariosPersonalizado"
+                            rows="4"
+                            class="form-control"></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer border-secondary">
+
+                <button
+                    id="btnEnviarPersonalizado"
+                    class="btn btn-warning w-100 fw-bold">
+
+                    Enviar por WhatsApp
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="modal fade" id="modalMayoristas" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark text-white border border-warning rounded-4">
+
+            <div class="modal-header border-secondary">
+                <h2 class="text-warning fw-bold">Solicitud Mayorista</h2>
+
+                <button class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label>Nombre</label>
+                        <input type="text"
+                            id="nombreMayorista"
+                            class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>WhatsApp</label>
+                        <input type="text"
+                            id="whatsappMayorista"
+                            class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Empresa</label>
+                        <input type="text"
+                            id="empresaMayorista"
+                            class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Cantidad de Polos</label>
+
+                        <input type="number"
+                            id="cantidadMayorista"
+                            class="form-control">
+                    </div>
+
+                    <div class="col-12">
+                        <label>Comentarios</label>
+
+                        <textarea
+                            id="comentariosMayorista"
+                            rows="5"
+                            class="form-control"></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer border-secondary">
+
+                <button
+                    id="btnEnviarMayorista"
+                    class="btn btn-warning w-100 fw-bold">
+
+                    Enviar por WhatsApp
+
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 <script src="js/productos.js"></script>
 <script src="js/carrito.js"></script>
+<script src="js/whatsapp2.js"></script>
+<script src="js/mayoristas.js"></script>
 
 </body>
 

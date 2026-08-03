@@ -822,3 +822,28 @@ font-size:4rem;
     color:white;
 
 }
+/*==========================================
+        AJUSTE PRECIO EN CELULAR
+==========================================*/
+
+@media (max-width:768px){
+
+    .product-footer{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:15px;
+    }
+
+    .product-price{
+        font-size:2rem;
+        white-space:nowrap;
+        min-width:110px;
+        line-height:1;
+    }
+
+    .btn-comprar{
+        flex:1;
+    }
+
+}
