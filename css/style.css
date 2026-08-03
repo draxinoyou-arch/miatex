@@ -42,7 +42,7 @@ body{
 
     border-bottom:1px solid rgba(255,191,0,.12);
 
-    padding:18px 0;
+    padding:8px 0;
 
 }
 
@@ -89,38 +89,50 @@ body{
 
 .hero{
 
-    margin-top:45px;
+    margin-top:25px;
 
-    background:#f8f7f4;
+    background:
+radial-gradient(circle at top,
+#3b4047 0%,
+#23272e 35%,
+#141618 70%,
+#080808 100%);
 
     border-radius:35px;
 
-    padding:80px;
+    padding:70px 70px;
+
+    min-height:620px;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
 
     border:1px solid rgba(255,191,0,.18);
 
     box-shadow:
+0 35px 80px rgba(0,0,0,.18),
+0 10px 30px rgba(255,191,0,.08);
 
-    0 30px 80px rgba(0,0,0,.35);
+}
+.hero .col-lg-6:first-child{
+
+    position:relative;
+
+    z-index:5;
 
 }
 
+.hero .col-lg-6:last-child{
 
-/*=================================================
-                TITULOS
-==================================================*/
+    position:relative;
 
-.hero h1{
-
-    font-size:4rem;
-
-    font-weight:800;
-
-    line-height:1.1;
-
-    color:#20242b;
+    z-index:2;
 
 }
+
 
 .hero h1 span{
 
@@ -130,13 +142,13 @@ body{
 
 .hero p{
 
-    color:#666;
+    color:#cfd4da;
 
-    font-size:1.35rem;
+    font-size:1.15rem;
 
-    line-height:1.8;
+    line-height:1.9;
 
-    margin-top:25px;
+    max-width:700px;
 
 }
 
@@ -160,6 +172,7 @@ body{
     padding:14px 35px;
 
     transition:.35s;
+    box-shadow:0 15px 30px rgba(255,191,0,.28);
 
 }
 
@@ -173,6 +186,12 @@ body{
 
 .btn-outline-dark{
 
+    color:#ffffff;
+
+    border:2px solid rgba(255,255,255,.25);
+
+    background:rgba(255,255,255,.05);
+
     border-radius:12px;
 
     padding:14px 35px;
@@ -185,11 +204,9 @@ body{
 
 .btn-outline-dark:hover{
 
-    background:#20242b;
+    background:#ffffff;
 
-    color:#fff;
-
-    transform:translateY(-3px);
+    color:#111;
 
 }
 
@@ -198,23 +215,40 @@ body{
                 IMAGEN HERO
 ==================================================*/
 
-.hero img{
 
-    width:100%;
-
-    border-radius:30px;
-
-    box-shadow:
-
-    0 30px 60px rgba(0,0,0,.30);
-
-    transition:.40s;
-
+.hero .row{
+    align-items:flex-start;
 }
 
-.hero img:hover{
 
-    transform:scale(1.02);
+.hero-image{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-logo{
+
+    width:860px;
+
+    max-width:none;
+
+    display:block;
+
+    position:relative;
+
+    right:-10px;
+
+    top:-10px;
+
+    z-index:1;
+
+    animation:floatLogo 5s ease-in-out infinite;
+
+    filter:drop-shadow(0 35px 45px rgba(0,0,0,.20));
+    filter:
+drop-shadow(0 40px 60px rgba(0,0,0,.18))
+drop-shadow(0 0 35px rgba(255,191,0,.18));
 
 }
 
@@ -294,15 +328,11 @@ text-align:center;
 
 .hero h1{
 
-font-size:2.8rem;
+font-size:4rem;
 
 }
 
-.hero img{
 
-margin-top:40px;
-
-}
 
 }
 
@@ -344,12 +374,29 @@ margin-bottom:15px;
 }
 
 .feature-box{
-    background:#ffffff;
-    border-radius:18px;
-    padding:30px 20px;
+
+    background:#20242b;
+
+    border:1px solid rgba(255,191,0,.15);
+
+    border-radius:24px;
+
+    padding:40px 30px;
+
     height:100%;
-    transition:.3s;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    text-align:center;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.30);
+
+    transition:.35s;
+
 }
 
 .feature-box:hover{
@@ -358,8 +405,29 @@ margin-bottom:15px;
 }
 
 .feature-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    border:2px solid #ffbf00;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
     font-size:42px;
-    margin-bottom:15px;
+
+    color:#ffbf00;
+
+    background:rgba(255,191,0,.05);
+
 }
 
 .feature-box h4{
@@ -370,7 +438,387 @@ margin-bottom:15px;
 }
 
 .feature-box p{
+
+    color:#d0d0d0;
+
+    line-height:1.8;
+
+    font-size:1.05rem;
+
+    margin-bottom:30px;
+
+    flex:1;
+
+}
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.hero-title{
+
+    font-size:4.3rem;
+
+    max-width:560px;
+
+    line-height:1.05;
+
+    color:#ffffff;
+}
+@media(min-width:1200px){
+
+.hero .row{
+
+align-items:center;
+
+}
+
+
+
+.hero-title{
+
+font-size:4rem;
+
+}
+
+}
+@keyframes floatLogo{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+@media (min-width:1200px){
+
+   .hero .container{
+    max-width:1400px;
+}
+
+    .hero .col-lg-6:first-child{
+
+    padding-right:15px;
+
+}
+
+    .hero .col-lg-6:last-child{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+}
+@media (max-width:991px){
+
+    .hero{
+        padding:35px 25px;
+        text-align:center;
+    }
+
+    .hero-title{
+        font-size:2.8rem;
+        line-height:1.15;
+    }
+
+    .hero-logo{
+        position:relative;
+        width:320px;
+        right:0;
+        top:0;
+        margin:40px auto 0;
+    }
+
+    .hero .col-lg-6,
+    .hero .col-lg-7{
+        width:100%;
+    }
+
+}
+.hero .d-flex{
+
+    margin-top:35px !important;
+
+    position:relative;
+
+    top:0;
+
+}
+/*==========================================
+        TARJETAS PREMIUM HERO
+==========================================*/
+
+.feature-box{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:45px 35px;
+
+    transition:.35s;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.10);
+
+    border:1px solid rgba(255,191,0,.10);
+
+}
+
+.feature-box:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.18),
+    0 0 25px rgba(255,191,0,.18);
+
+}
+
+.feature-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:20px;
+
+    background:#fff8df;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:34px;
+
+    color:#d8a300;
+
+    margin-bottom:20px;
+
+    transition:.35s;
+
+}
+
+.feature-box:hover .feature-icon{
+
+    transform:scale(1.12);
+
+}
+
+.feature-box h5{
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+    color:#222;
+
+    margin-bottom:15px;
+
+}
+
+.feature-box p{
+
     color:#666;
+
     line-height:1.7;
-    margin:0;
+
+    min-height:120px;
+
+}
+
+.feature-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:100%;
+
+    background:#ffbf00;
+
+    color:#111;
+
+    padding:18px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+}
+.hero .row.mt-5{
+
+    margin-top:70px !important;
+
+}
+
+
+.feature-btn:hover{
+
+    background:#e1a700;
+
+    color:#111;
+
+}
+/*=========================
+      PRODUCTOS
+==========================*/
+
+.product-card{
+
+    background:#ffffff;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+    height:100%;
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+
+}
+
+.product-image{
+
+    height:270px;
+
+    overflow:hidden;
+
+    background:#f6f6f6;
+
+}
+
+.product-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.product-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.product-body{
+
+    padding:22px;
+
+}
+
+.product-category{
+
+    background:#ffbf00;
+
+    color:#111;
+
+    padding:5px 12px;
+
+    border-radius:50px;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+.product-body h5{
+
+    margin-top:18px;
+
+    font-weight:700;
+
+}
+
+.product-body p{
+
+    color:#666;
+
+    min-height:55px;
+
+}
+
+.product-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:18px;
+
+}
+
+.product-price{
+
+    font-size:1.4rem;
+
+    font-weight:800;
+
+    color:#111;
+
+}
+
+.btn-comprar{
+
+    border:none;
+
+    background:#ffbf00;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.btn-comprar:hover{
+
+    background:#111;
+
+    color:white;
+
 }
