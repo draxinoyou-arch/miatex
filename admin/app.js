@@ -173,3 +173,18 @@ await addDoc(collection(db,"productos"),{
     cargarProductos();
 
 });
+import { auth } from "../js/firebase.js";
+
+import {
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const btnCerrar = document.getElementById("btnCerrar");
+
+btnCerrar.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+    window.location.href = "index.html";
+
+});

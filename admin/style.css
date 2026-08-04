@@ -33,3 +33,26 @@ body{
 }
 
 }
+body{
+    background:#0f172a;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.login-box{
+    width:100%;
+    max-width:450px;
+    background:#1e293b;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.logo-login{
+    width:130px;
+    display:block;
+    margin:0 auto 25px;
+}
