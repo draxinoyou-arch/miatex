@@ -29,7 +29,7 @@ datos.forEach((doc) => {
         const p = doc.data();
 
         contenedor.innerHTML += `
-        <div class="col-lg-3 col-md-4 col-6 mb-4">
+       <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
 
             <div
 class="card h-100 shadow-sm producto-card"
@@ -57,7 +57,7 @@ onclick="abrirProducto(
                     <h4>S/ ${p.precio}</h4>
 
                     <button
-                        class="btn btn-warning w-100 agregar-carrito"
+class="btn btn-warning btn-lg w-100 agregar-carrito"
                         data-id="${doc.id}">
                         Agregar al carrito
                     </button>
@@ -214,7 +214,7 @@ document.getElementById("btnVerMas").addEventListener("click", async () => {
             const p = doc.data();
 
             contenedor.innerHTML += `
-            <div class="col-lg-3 col-md-4 col-6 mb-4">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
 
                 <div class="card h-100 shadow-sm producto-card" style="cursor:pointer">
 
