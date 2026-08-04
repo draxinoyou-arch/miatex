@@ -1,0 +1,35 @@
+body{
+    background:#0f172a;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.sidebar{
+    min-height:100vh;
+}
+
+.card{
+    border-radius:18px;
+}
+
+#listaProductos .card{
+    margin-bottom:20px;
+}
+
+.producto-img{
+    width:100%;
+    max-height:220px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.btn-warning{
+    font-weight:bold;
+}
+
+@media(max-width:991px){
+
+.sidebar{
+    min-height:auto;
+}
+
+}

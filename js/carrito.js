@@ -139,13 +139,13 @@ document.getElementById("btnWhatsapp").onclick = ()=>{
 
     carrito.forEach((p,i)=>{
 
-        let subtotal = p.precio * p.cantidad;
+       let subtotal = Number(p.precio) * p.cantidad;
         total += subtotal;
 
         mensaje += `*${i+1}. ${p.nombre}*%0A`;
         mensaje += `📏 Talla: ${p.talla}%0A`;
         mensaje += `📦 Cantidad: ${p.cantidad}%0A`;
-        mensaje += `💵 Precio: S/${p.precio.toFixed(2)}%0A`;
+        mensaje += `💵 Precio: S/${Number(p.precio).toFixed(2)}%0A`;
         mensaje += `💰 Subtotal: S/${subtotal.toFixed(2)}%0A%0A`;
 
     });
@@ -155,9 +155,23 @@ document.getElementById("btnWhatsapp").onclick = ()=>{
     mensaje += "Quedo atento a la cotización. Gracias.";
 
     window.open(
-        "https://wa.me/51913992723?text="+mensaje,
+        "https://wa.me/51920543855?text="+mensaje,
         "_blank"
     );
+    carrito = [];
+
+localStorage.removeItem("carrito");
+
+actualizarCarrito();
+
+const panel = document.getElementById("carritoLateral");
+
+if(panel){
+
+    panel.classList.remove("show");
+    panel.classList.remove("activo");
+
+}
 
 }
 actualizarCarrito();
@@ -186,3 +200,5 @@ function disminuirCantidad(index){
     actualizarCarrito();
 
 }
+window.agregarAlCarrito = agregarAlCarrito;
+window.actualizarCarrito = actualizarCarrito;

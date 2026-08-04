@@ -847,3 +847,94 @@ font-size:4rem;
     }
 
 }
+/*=========================================
+      EFECTOS PREMIUM
+=========================================*/
+
+/* Productos */
+
+.producto-card{
+
+transition:.35s ease;
+
+}
+
+.producto-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 25px 50px rgba(0,0,0,.25);
+
+}
+
+.producto-card img{
+
+transition:.45s;
+
+}
+
+.producto-card:hover img{
+
+transform:scale(1.06);
+
+}
+
+/* Nosotros */
+
+#nosotros .border{
+
+transition:.35s;
+
+}
+
+#nosotros .border:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 30px rgba(255,191,0,.25);
+
+}
+
+#nosotros i{
+
+transition:.35s;
+
+}
+
+#nosotros .border:hover i{
+
+transform:scale(1.18) rotate(-5deg);
+
+color:#ffbf00;
+
+}
+.nosotros-card{
+
+background:#22272f;
+
+}
+.bi-tiktok{
+
+font-size:32px;
+
+color:#fff;
+
+transition:.35s;
+
+filter:
+drop-shadow(0 0 5px #25F4EE)
+drop-shadow(0 0 8px #FE2C55);
+
+}
+
+.bi-tiktok:hover{
+
+transform:scale(1.2) rotate(-8deg);
+
+color:#fff;
+
+filter:
+drop-shadow(0 0 10px #25F4EE)
+drop-shadow(0 0 16px #FE2C55);
+
+}

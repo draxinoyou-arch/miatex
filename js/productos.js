@@ -1,261 +1,273 @@
-const listaProductos = document.getElementById("listaProductos");
+import { db } from "./firebase.js";
+
+import {
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const contenedor = document.getElementById("listaProductos");
+const modal = new bootstrap.Modal(
+    document.getElementById("productoModal")
+);
+
 let productoSeleccionado = null;
 
-function crearProducto(producto) {
+async function cargarProductos() {
 
-    return `
+    contenedor.innerHTML = "";
 
-    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+    const datos = await getDocs(collection(db, "productos"));
 
-        <div class="product-card h-100">
+    let contador = 0;
 
-            <div class="product-image">
+datos.forEach((doc) => {
+
+    if (contador >= 4) return;
+
+    contador++;
+
+        const p = doc.data();
+
+        contenedor.innerHTML += `
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+
+            <div
+class="card h-100 shadow-sm producto-card"
+style="cursor:pointer">
 
                 <img
-src="${producto.imagen}"
-class="card-img-top producto-imagen"
-alt="${producto.nombre}"
+src="${p.imagen}"
+class="card-img-top"
+style="height:280px;object-fit:cover;">
 
-style="cursor:pointer"
+                <div
+class="card-body"
+onclick="abrirProducto(
+'${doc.id}',
+'${p.nombre}',
+'${p.descripcion}',
+'${p.precio}',
+'${p.imagen}'
+)">
 
-onclick="abrirProducto(${producto.id})"
->
+                    <h5>${p.nombre}</h5>
 
-            </div>
+                    <p>${p.descripcion}</p>
 
-            <div class="product-body">
-
-                <span class="product-category">
-
-                    ${producto.categoria}
-
-                </span>
-
-                <h5>
-
-                    ${producto.nombre}
-
-                </h5>
-
-                <p>
-
-                    ${producto.descripcion}
-
-                </p>
-
-                <div class="product-footer">
-
-                    <div class="product-price">
-
-                        S/ ${producto.precio}
-
-                    </div>
+                    <h4>S/ ${p.precio}</h4>
 
                     <button
-
-class="btn btn-warning fw-bold"
-
-onclick="abrirProducto(${producto.id})"
-
->
-
-Agregar
-
-</button>
+                        class="btn btn-warning w-100 agregar-carrito"
+                        data-id="${doc.id}">
+                        Agregar al carrito
+                    </button>
 
                 </div>
 
             </div>
 
         </div>
-
-    </div>
-
-    `;
+        `;
+    });
 
 }
-const productos = [
 
-{
-id:1,
-nombre:"Polo Premium Negro",
-categoria:"Premium",
-descripcion:"Polo algodón premium.",
-precio:39.90,
-imagen:"assets/products/polo1.jpg"
-},
+cargarProductos();
+window.abrirProducto = function(
+id,
+nombre,
+descripcion,
+precio,
+imagen
+){
 
-{
-id:2,
-nombre:"Polo Blanco",
-categoria:"Premium",
-descripcion:"Ideal para sublimación.",
-precio:34.90,
-imagen:"assets/products/polo1.jpg"
-},
+    productoSeleccionado = {
 
-{
-id:3,
-nombre:"Polo Corporativo",
-categoria:"Empresa",
-descripcion:"Especial para empresas.",
-precio:42.90,
-imagen:"assets/products/polo1.jpg"
-},
+        id,
+        nombre,
+        descripcion,
+        precio,
+        imagen
 
-{
-id:4,
-nombre:"Polo Dry Fit",
-categoria:"Deportivo",
-descripcion:"Tela deportiva ligera.",
-precio:44.90,
-imagen:"assets/products/polo1.jpg"
-},
+    };
 
-{
-id:5,
-nombre:"Polo Oversize",
-categoria:"Moda",
-descripcion:"Modelo oversize moderno.",
-precio:49.90,
-imagen:"assets/products/polo1.jpg"
-},
+    document.getElementById("modalTitulo").innerHTML = nombre;
 
-{
-id:6,
-nombre:"Polo Ejecutivo",
-categoria:"Corporativo",
-descripcion:"Ideal para uniformes.",
-precio:41.90,
-imagen:"assets/products/polo1.jpg"
+    document.getElementById("modalDescripcion").innerHTML = descripcion;
+
+    document.getElementById("modalPrecio").innerHTML =
+    "S/ " + Number(precio).toFixed(2);
+
+    document.getElementById("modalImagen").src = imagen;
+
+    document.getElementById("modalCategoria").innerHTML =
+    "Polo Premium";
+
+    modal.show();
+
 }
+let cantidad = 1;
 
-];
+const inputCantidad = document.getElementById("cantidadProducto");
 
-listaProductos.innerHTML = "";
+document.getElementById("masCantidad").addEventListener("click", () => {
 
-const LIMITE = 4;
+    cantidad++;
 
-productos.forEach((producto,index)=>{
+    inputCantidad.value = cantidad;
 
-    if(index < LIMITE){
+});
 
-        listaProductos.innerHTML += crearProducto(producto);
+document.getElementById("menosCantidad").addEventListener("click", () => {
+
+    if (cantidad > 1) {
+
+        cantidad--;
+
+        inputCantidad.value = cantidad;
 
     }
 
 });
-function abrirProducto(id){
+let tallaSeleccionada = "M";
 
-    const producto = productos.find(p => p.id === id);
-    productoSeleccionado = producto;
+document.querySelectorAll(".talla-btn").forEach(btn => {
 
-    document.getElementById("modalImagen").src = producto.imagen;
+    btn.addEventListener("click", () => {
 
-    document.getElementById("modalTitulo").innerHTML = producto.nombre;
+        document.querySelectorAll(".talla-btn").forEach(b => {
 
-    document.getElementById("modalCategoria").innerHTML = producto.categoria;
+            b.classList.remove("btn-warning");
 
-    document.getElementById("modalPrecio").innerHTML = "S/ " + producto.precio;
+            b.classList.add("btn-outline-light");
 
-    document.getElementById("modalDescripcion").innerHTML = producto.descripcion;
-    cantidadSeleccionada = 1;
-
-document.getElementById("cantidadProducto").value = 1;
-
-tallaSeleccionada = "M";
-
-document.querySelectorAll(".talla-btn").forEach(btn=>{
-
-    btn.classList.remove("btn-warning");
-
-    btn.classList.add("btn-outline-light");
-
-    if(btn.dataset.talla==="M"){
+        });
 
         btn.classList.remove("btn-outline-light");
 
         btn.classList.add("btn-warning");
 
-    }
+        tallaSeleccionada = btn.dataset.talla;
+
+    });
 
 });
+document.getElementById("btnAgregarModal").addEventListener("click", () => {
 
-    const modal = new bootstrap.Modal(
-    document.getElementById("productoModal")
-);
+    if (!productoSeleccionado) return;
 
-document.getElementById("btnAgregarModal").onclick = function(){
-
-    window.agregarAlCarrito({
-
+    const producto = {
         id: productoSeleccionado.id,
         nombre: productoSeleccionado.nombre,
         precio: productoSeleccionado.precio,
         imagen: productoSeleccionado.imagen,
         talla: tallaSeleccionada,
-        cantidad: cantidadSeleccionada
+        cantidad: cantidad
+    };
 
-    });
+    window.agregarAlCarrito(producto);
 
-    modal.hide();
+alert("Producto agregado al carrito");
 
-};
+modal.hide();
 
-modal.show();
+});
+document.getElementById("btnWhatsappModal").addEventListener("click", () => {
 
-}
-//=========================================
-// TALLAS Y CANTIDAD
-//=========================================
+    if (!productoSeleccionado) return;
 
-let tallaSeleccionada = "M";
+    let mensaje =
+`👋 Hola MIA TEX.
 
-let cantidadSeleccionada = 1;
+Quiero comprar este producto:
 
-document.addEventListener("click",(e)=>{
+🛍 Producto: ${productoSeleccionado.nombre}
 
-    // Seleccionar talla
+📏 Talla: ${tallaSeleccionada}
 
-    if(e.target.classList.contains("talla-btn")){
+📦 Cantidad: ${cantidad}
 
-        document.querySelectorAll(".talla-btn").forEach(btn=>{
+💲 Precio: S/ ${Number(productoSeleccionado.precio).toFixed(2)}
 
-            btn.classList.remove("btn-warning");
+Muchas gracias.`;
 
-            btn.classList.add("btn-outline-light");
+    window.open(
+        "https://wa.me/51920543855?text=" + encodeURIComponent(mensaje),
+        "_blank"
+    );
+
+});
+let mostrandoTodos = false;
+
+document.getElementById("btnVerMas").addEventListener("click", async () => {
+
+    if (mostrandoTodos == false) {
+
+        mostrandoTodos = true;
+
+        contenedor.innerHTML = "";
+
+        const datos = await getDocs(collection(db, "productos"));
+
+        datos.forEach((doc) => {
+
+            const p = doc.data();
+
+            contenedor.innerHTML += `
+            <div class="col-lg-3 col-md-4 col-6 mb-4">
+
+                <div class="card h-100 shadow-sm producto-card" style="cursor:pointer">
+
+                    <img
+                    src="${p.imagen}"
+                    class="card-img-top"
+                    style="height:280px;object-fit:cover;">
+
+                    <div
+                    class="card-body"
+                    onclick="abrirProducto(
+                    '${doc.id}',
+                    '${p.nombre}',
+                    '${p.descripcion}',
+                    '${p.precio}',
+                    '${p.imagen}'
+                    )">
+
+                        <h5>${p.nombre}</h5>
+
+                        <p>${p.descripcion}</p>
+
+                        <h4>S/ ${p.precio}</h4>
+
+                        <button
+                        class="btn btn-warning w-100">
+                        Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+            `;
 
         });
 
-        e.target.classList.remove("btn-outline-light");
+        document.getElementById("btnVerMas").innerHTML =
+        "Ver menos productos";
 
-        e.target.classList.add("btn-warning");
+    } else {
 
-        tallaSeleccionada = e.target.dataset.talla;
+        mostrandoTodos = false;
 
-    }
+        cargarProductos();
 
-    // Aumentar cantidad
+        document.getElementById("btnVerMas").innerHTML =
+        "Ver más productos";
 
-    if(e.target.id==="masCantidad"){
-
-        cantidadSeleccionada++;
-
-        document.getElementById("cantidadProducto").value=cantidadSeleccionada;
-
-    }
-
-    // Disminuir cantidad
-
-    if(e.target.id==="menosCantidad"){
-
-        if(cantidadSeleccionada>1){
-
-            cantidadSeleccionada--;
-
-            document.getElementById("cantidadProducto").value=cantidadSeleccionada;
-
-        }
+        document.getElementById("productos").scrollIntoView({
+            behavior: "smooth"
+        });
 
     }
 

@@ -21,7 +21,7 @@ Comentarios:
 ${comentarios}`;
 
     window.open(
-        `https://wa.me/51913992723?text=${encodeURIComponent(mensaje)}`,
+        `https://wa.me/51920543855?text=${encodeURIComponent(mensaje)}`,
         "_blank"
     );
 
